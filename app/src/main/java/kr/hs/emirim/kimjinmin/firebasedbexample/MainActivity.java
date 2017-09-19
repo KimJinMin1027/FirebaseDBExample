@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         mNameTextView=(TextView) findViewById(R.id.profile_name);
         mGithubTextView=(TextView) findViewById(R.id.profile_github);
         mProfileImageView=(ImageView) findViewById(R.id.profile_image);
-        
+
 
     }
 }
