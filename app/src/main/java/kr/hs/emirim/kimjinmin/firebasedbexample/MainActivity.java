@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class MainActivity extends AppCompatActivity {
     private TextView mNameTextView; //멤버변수 이름 앞엔 m붙여서 보기 편하도록
     private TextView mGithubTextView;
@@ -19,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
         mGithubTextView=(TextView) findViewById(R.id.profile_github);
         mProfileImageView=(ImageView) findViewById(R.id.profile_image);
 
+        Picasso.with(this)
+                .load("http://i.imgur.com/DvpvklR.png")
+                .centerCrop()
+                .resize(100,100)
+                .into(mProfileImageView); //context->흐름, 문맥
 
     }
 }
