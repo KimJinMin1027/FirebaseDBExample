@@ -8,12 +8,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mNameTextView; //멤버변수 이름 앞엔 m붙여서 보기 편하도록
     private TextView mGithubTextView;
     private ImageView mProfileImageView;
+
+    FirebaseDatabase mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +36,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 .centerCrop()
                 .resize(100,100)
                 .into(mProfileImageView); //context->흐름, 문맥
+
+        // Write a message to the database
+        mDatabase = FirebaseDatabase.getInstance();
+
+
+        DatabaseReference profileNameRef = mDatabase.getReference("profile/name");
+
+        ValueEventListener profileNameListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String name=dataSnapshot.getValue(String.class);
+                mNameTextView.setText(name);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        profileNameRef.addValueEventListener(profileNameListener);
+
 
     }
 
