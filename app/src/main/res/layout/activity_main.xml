@@ -25,7 +25,7 @@
 
             <TextView
                 android:id="@+id/profile_name"
-                android:text="정유경"
+                android:text="김진민"
                 android:padding="10dp"
                 android:textSize="48sp"
                 android:gravity="center"
@@ -35,8 +35,10 @@
                 android:id="@+id/profile_github"
                 android:text="https://github.com/KimJinMin1027"
                 android:padding="10dp"
-                android:textColor="#398"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
                 android:gravity="center"
+                android:onClick="onClick"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
